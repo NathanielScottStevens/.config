@@ -1,5 +1,4 @@
 # ZSH
-export ZSH="/Users/nathaniel.stevens/.oh-my-zsh"
 ZSH_THEME="agnoster"
 HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
