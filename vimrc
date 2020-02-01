@@ -23,7 +23,11 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive' "Git Wrapper
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mhinz/vim-startify'
@@ -40,6 +44,10 @@ Plugin 'jpalardy/vim-slime' "Not for Haskell specifically but used to send code 
 call vundle#end()            
 
 filetype plugin indent on   
+
+" Airline
+let g:airline_theme='papercolor'
+let g:airline_powerline_fonts=1
 
 " NerdTree
 map <F2> :NERDTreeToggle<CR>
