@@ -51,3 +51,6 @@ let g:airline_powerline_fonts=1
 
 " NerdTree
 map <F2> :NERDTreeToggle<CR>
+
+" CtrlP
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
