@@ -14,3 +14,8 @@ C-z (  previous session
 C-z s  choose session from a list
 ```
 
+###Misc
+Find and replace
+`find . -name "*.txt" | xargs sed -i "" "s/alyssa/nathaniel/g"`
+
+
