@@ -1,5 +1,6 @@
 syntax on
 set tabstop=4
+set number
 set relativenumber
 set shiftwidth=4
 set expandtab
@@ -30,8 +31,10 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'mhinz/vim-startify'
+Plugin 'scrooloose/nerdtree' "May remove this in favor of vinegar
+Plugin 'tpope/vim-vinegar'
+Plugin 'mhinz/vim-startify' 
+Plugin 'tpope/vim-dispatch'
 
 " Elixir
 Plugin 'slashmili/alchemist.vim'
