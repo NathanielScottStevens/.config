@@ -31,7 +31,6 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree' "May remove this in favor of vinegar
 Plugin 'tpope/vim-vinegar'
 Plugin 'mhinz/vim-startify' 
 Plugin 'tpope/vim-dispatch'
@@ -39,6 +38,7 @@ Plugin 'tpope/vim-dispatch'
 " Elixir
 Plugin 'slashmili/alchemist.vim'
 Plugin 'elixir-editors/vim-elixir'
+Plugin 'mhinz/vim-mix-format'
 
 Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
 
@@ -67,3 +67,6 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-o
 " Haskell
 let g:hindent_on_save = 1
 let g:haskell_indent_disable = 1
+
+" Elixir
+let g:mix_format_on_save = 1
