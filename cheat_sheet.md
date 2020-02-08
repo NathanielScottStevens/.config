@@ -5,6 +5,11 @@
 Send highlighted code to the repl in another pane
 C-c, C-c   (You can double tap c)
 
+### Elixir Alchemist
+Auto Completion `<C-x><C-o>`
+View Docs `K`
+Jump to definition `<C-]>`
+
 
 ## Tmux
 Switch between sessions

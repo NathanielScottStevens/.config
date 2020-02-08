@@ -8,6 +8,13 @@ set smartindent
 set autoindent
 set clipboard=unnamed
 
+let mapleader = ","
+let maplocalleader = "\\"
+
+nnoremap <Leader>ve :vsplit $MYVIMRC<cr>
+nnoremap <Leader>vs :source $MYVIMRC<cr>
+nnoremap <Leader>cs :split ~/config/cheat_sheet.md<cr>
+
 
 " Vundle
 set nocompatible              
