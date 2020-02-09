@@ -11,9 +11,12 @@ set clipboard=unnamed
 let mapleader = ","
 let maplocalleader = "\\"
 
+inoremap jk <esc>
 nnoremap <Leader>ve :vsplit $MYVIMRC<cr>
 nnoremap <Leader>vs :source $MYVIMRC<cr>
 nnoremap <Leader>cs :split ~/config/cheat_sheet.md<cr>
+nnoremap H ^
+nnoremap L $
 
 
 " Vundle
