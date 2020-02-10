@@ -8,6 +8,13 @@ set smartindent
 set autoindent
 set clipboard=unnamed
 
+" I mostly did this for the sake of Dispatch opening
+" in the right place
+set splitbelow
+set splitright
+
+hi QuickFixLine ctermbg=234
+
 let mapleader = ","
 let maplocalleader = "\\"
 
@@ -17,6 +24,13 @@ nnoremap <Leader>vs :source $MYVIMRC<cr>
 nnoremap <Leader>cs :split ~/config/cheat_sheet.md<cr>
 nnoremap H ^
 nnoremap L $
+
+" Vim Test
+nnoremap <silent> <leader>tt :TestNearest<CR>
+nnoremap <silent> <leader>tb :TestFile<CR>
+nnoremap <silent> <leader>ta :TestSuite<CR>
+nnoremap <silent> <leader>tr :TestLast<CR>
+let test#strategy = "dispatch"
 
 
 " Vundle
@@ -44,6 +58,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-vinegar'
 Plugin 'mhinz/vim-startify' 
 Plugin 'tpope/vim-dispatch'
+Plugin 'janko/vim-test'
 
 " Elixir
 Plugin 'slashmili/alchemist.vim'
