@@ -1,6 +1,17 @@
 # Cheat Sheet
 
 ## Vim
+
+### Tabs
+Create new tab
+`:tabnew file`
+
+Create new tab with search term
+`:tabf file*`
+
+Reorder tabs
+`:tabm 0`
+
 ### Slime
 Send highlighted code to the repl in another pane
 C-c, C-c   (You can double tap c)

@@ -24,6 +24,7 @@ nnoremap <Leader>vs :source $MYVIMRC<cr>
 nnoremap <Leader>cs :split ~/config/cheat_sheet.md<cr>
 nnoremap H ^
 nnoremap L $
+nnoremap <leader>cf :let @" = expand("%")<cr>
 
 " Vim Test
 nnoremap <silent> <leader>tt :TestNearest<CR>
