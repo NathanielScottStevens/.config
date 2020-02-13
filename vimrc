@@ -54,6 +54,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
+Plugin 'ycm-core/YouCompleteMe'
 
 " Elixir
 Plugin 'slashmili/alchemist.vim'
