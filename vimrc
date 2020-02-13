@@ -52,7 +52,6 @@ Plugin 'guns/vim-clojure-highlight'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-vinegar'
-Plugin 'mhinz/vim-startify' 
 Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
 
