@@ -8,11 +8,6 @@ set smartindent
 set autoindent
 set clipboard=unnamed
 
-" I mostly did this for the sake of Dispatch opening
-" in the right place
-set splitbelow
-set splitright
-
 hi QuickFixLine ctermbg=234
 
 let mapleader = ","

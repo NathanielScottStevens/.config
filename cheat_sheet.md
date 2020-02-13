@@ -12,6 +12,12 @@ Create new tab with search term
 Reorder tabs
 `:tabm 0`
 
+### Obsession
+To start a session
+`:Obsess`
+To load a session
+`:source` or `vim -S`
+
 ### Slime
 Send highlighted code to the repl in another pane
 C-c, C-c   (You can double tap c)
