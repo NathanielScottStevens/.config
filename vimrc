@@ -45,6 +45,10 @@ command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap / :Ag<SPACE>
 nnoremap <leader>/ :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
+" Quickfix Window
+nnoremap <C-J> :cn<CR>
+nnoremap <C-K> :cp<CR>
+
 " Vundle
 set nocompatible              
 filetype off                 
