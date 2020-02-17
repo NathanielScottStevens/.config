@@ -39,4 +39,16 @@ C-z s  choose session from a list
 Find and replace
 `find . -name "*.txt" | xargs sed -i "" "s/alyssa/nathaniel/g"`
 
+List to UDP
+`nc -ul #{port}`
+Listen to TCP on local
+`nc -lk #{port}`
+
+Listen to HTTP Requests
+```
+npm install http-echo-server -g
+PORT=8081 http-echo-server
+```
+
+
 
