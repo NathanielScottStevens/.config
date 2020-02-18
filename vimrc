@@ -40,14 +40,14 @@ if executable('ag')
    let g:ctrlp_use_caching = 0
 endif
 
-" bind \ (backward slash) to grep shortcut
+" Ag Bindings
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap / :Ag<SPACE>
-nnoremap <leader>/ :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap <leader>/ :Ag<SPACE>
+nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Quickfix Window
-nnoremap <C-J> :cn<CR>
-nnoremap <C-K> :cp<CR>
+nnoremap <C-k> :cp<CR>
+nnoremap <C-j> :cn<CR>
 
 " Vundle
 set nocompatible              
