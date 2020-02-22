@@ -40,9 +40,9 @@ Find and replace
 `find . -name "*.txt" | xargs sed -i "" "s/alyssa/nathaniel/g"`
 
 List to UDP
-`nc -ul #{port}`
+`nc -ulp #{port}`
 Listen to TCP on local
-`nc -lk #{port}`
+`nc -lkp #{port}`
 
 Listen to HTTP Requests
 ```

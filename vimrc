@@ -1,12 +1,12 @@
 syntax on
 set tabstop=4
 set number
-set relativenumber
 set shiftwidth=4
 set expandtab
 set smartindent
 set autoindent
 set clipboard=unnamed
+set hidden
 
 hi QuickFixLine ctermbg=234
 
@@ -74,7 +74,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
-Plugin 'ycm-core/YouCompleteMe'
 
 " Elixir
 Plugin 'slashmili/alchemist.vim'
