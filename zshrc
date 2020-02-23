@@ -1,7 +1,6 @@
 # ZSH
 ZSH_THEME="agnoster"
 HYPHEN_INSENSITIVE="true"
-ENABLE_CORRECTION="true"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 

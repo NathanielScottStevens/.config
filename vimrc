@@ -74,13 +74,13 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
+Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
 
 " Elixir
 Plugin 'slashmili/alchemist.vim'
-Plugin 'elixir-editors/vim-elixir'
+Plugin 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
 Plugin 'mhinz/vim-mix-format'
 
-Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
 
 " Haskell
 Plugin 'neovimhaskell/haskell-vim'
