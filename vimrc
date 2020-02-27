@@ -1,3 +1,4 @@
+" Basic settings ---------------------- {{{
 syntax on
 set tabstop=4
 set number
@@ -7,9 +8,15 @@ set smartindent
 set autoindent
 set clipboard=unnamed
 set hidden
+set foldtext=getline(v:foldstart)
+" }}}
 
-hi QuickFixLine ctermbg=234
+" Color settings ---------------------- {{{
+highlight QuickFixLine ctermbg=234
+highlight Folded ctermfg=gray ctermbg=none
+" }}}
 
+" Mappings  ---------------------- {{{
 let mapleader = ","
 let maplocalleader = "\\"
 
@@ -20,15 +27,18 @@ nnoremap <Leader>cs :split ~/config/cheat_sheet.md<cr>
 nnoremap H ^
 nnoremap L $
 nnoremap <leader>cf :let @" = expand("%")<cr>
+nnoremap <leader>r :set relativenumber!<cr>
+" }}}
 
-" Vim Test
+" Vim Test  ---------------------- {{{
 nnoremap <silent> <leader>tt :TestNearest<CR>
 nnoremap <silent> <leader>tb :TestFile<CR>
 nnoremap <silent> <leader>ta :TestSuite<CR>
 nnoremap <silent> <leader>tr :TestLast<CR>
 let test#strategy = "dispatch"
+" }}}
 
-" The Silver Searcher
+" Searching ---------------------- {{{
 if executable('ag')
   " Use ag over grep
     set grepprg=ag\ --nogroup\ --nocolor
@@ -44,12 +54,14 @@ endif
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap <leader>/ :Ag<SPACE>
 nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" }}}
 
-" Quickfix Window
+" Quickfix Window ---------------------- {{{
 nnoremap <C-k> :cp<CR>
 nnoremap <C-j> :cn<CR>
+" }}}
 
-" Vundle
+" Vundle ---------------------- {{{
 set nocompatible              
 filetype off                 
 
@@ -89,24 +101,36 @@ Plugin 'jpalardy/vim-slime' "Not for Haskell specifically but used to send code 
 call vundle#end()            
 
 filetype plugin indent on   
+" }}}
 
-" Airline
+" Vinegar ---------------------- {{{
+" Prevents C-6 from cycling through vinegar buggers
+let g:netrw_altfile = 1
+autocmd FileType netrw setl bufhidden=wipe
+" }}}
+
+" Airline ---------------------- {{{
 let g:airline_theme='papercolor'
 let g:airline_powerline_fonts=1
+" }}}
 
-" NerdTree
-map <F2> :NERDTreeToggle<CR>
-
-" CtrlP
+" CtrlP ---------------------- {{{
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" }}}
 
-" Slime
+" Slime ---------------------- {{{
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
+" }}}
 
-" Haskell
+" Haskell ---------------------- {{{
 let g:hindent_on_save = 1
 let g:haskell_indent_disable = 1
+" }}}
 
-" Elixir
+" Elixir ---------------------- {{{
 let g:mix_format_on_save = 1
+augroup elixir 
+    autocmd BufNewFile *.exs :set filetype=elixir<cr>
+augroup END
+" }}}
