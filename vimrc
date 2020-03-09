@@ -9,6 +9,7 @@ set autoindent
 set clipboard=unnamed
 set hidden
 set foldtext=getline(v:foldstart)
+set foldlevel=99
 " }}}
 
 " Color settings ---------------------- {{{
@@ -51,9 +52,11 @@ if executable('ag')
 endif
 
 " Ag Bindings
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap <leader>/ :Ag<SPACE>
-nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+augroup Ag
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap <leader>/ :Ag<SPACE>
+    nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+augroup END
 " }}}
 
 " Quickfix Window ---------------------- {{{
@@ -106,7 +109,9 @@ filetype plugin indent on
 " Vinegar ---------------------- {{{
 " Prevents C-6 from cycling through vinegar buggers
 let g:netrw_altfile = 1
-autocmd FileType netrw setl bufhidden=wipe
+augroup hideFileType
+    autocmd FileType netrw setl bufhidden=wipe
+augroup END
 " }}}
 
 " Airline ---------------------- {{{
@@ -129,7 +134,7 @@ let g:haskell_indent_disable = 1
 " }}}
 
 " Elixir ---------------------- {{{
-let g:mix_format_on_save = 1
+" let g:mix_format_on_save = 1
 augroup elixir 
     autocmd BufNewFile *.exs :set filetype=elixir<cr>
 augroup END
