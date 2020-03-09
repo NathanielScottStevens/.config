@@ -13,6 +13,8 @@ set foldlevel=99
 " }}}
 
 " Color settings ---------------------- {{{
+set background=dark
+colorscheme desert
 highlight QuickFixLine ctermbg=234
 highlight Folded ctermfg=gray ctermbg=none
 " }}}
