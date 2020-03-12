@@ -27,7 +27,6 @@ Auto Completion `<C-x><C-o>`
 View Docs `K`
 Jump to definition `<C-]>`
 
-
 ## Tmux
 Switch between sessions
 ```
@@ -35,7 +34,7 @@ C-z (  previous session
 C-z s  choose session from a list
 ```
 
-### Misc
+## Misc
 Find and replace
 `find . -name "*.txt" | xargs sed -i "" "s/alyssa/nathaniel/g"`
 
@@ -50,5 +49,7 @@ npm install http-echo-server -g
 PORT=8081 http-echo-server
 ```
 
+Edit command in vim on command line
+`fc`
 
 

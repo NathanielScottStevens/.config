@@ -123,6 +123,7 @@ let g:airline_powerline_fonts=1
 
 " CtrlP ---------------------- {{{
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_working_path_mode = 0 "Use directory vim was started in as root directory
 " }}}
 
 " Slime ---------------------- {{{
