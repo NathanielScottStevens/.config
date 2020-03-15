@@ -27,9 +27,6 @@ inoremap jk <esc>
 nnoremap <Leader>ve :vsplit $MYVIMRC<cr>
 nnoremap <Leader>vs :source $MYVIMRC<cr>
 nnoremap <Leader>cs :split ~/config/cheat_sheet.md<cr>
-nnoremap H ^
-nnoremap L $
-nnoremap <leader>cf :let @" = expand("%")<cr>
 nnoremap <leader>r :set relativenumber!<cr>
 " }}}
 
@@ -39,6 +36,23 @@ nnoremap <silent> <leader>tb :TestFile<CR>
 nnoremap <silent> <leader>ta :TestSuite<CR>
 nnoremap <silent> <leader>tr :TestLast<CR>
 let test#strategy = "dispatch"
+" }}}
+
+" File ---------------------- {{{
+nnoremap <leader>fy :let @" = expand("%")<cr>
+
+function CopyFile()
+    call inputsave()
+    let l:name = input('File name: ')
+    call inputrestore()
+
+    let l:fileName = expand("%:h") . "/" . l:name . "." .  expand("%:e")
+
+    execute "silent !cp " . expand("%") . " " . l:fileName
+    execute "redraw!"
+    execute "edit " . l:fileName
+endfunction
+nnoremap <leader> fc :call CopyFile<cr>
 " }}}
 
 " Searching ---------------------- {{{
