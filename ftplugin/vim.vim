@@ -1,3 +1,3 @@
 " Basic settings ---------------------- {{{
-setlocal foldmethod=marker
+setlocal foldmethod=marker foldlevel=0
 " }}}

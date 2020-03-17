@@ -28,6 +28,10 @@ nnoremap <Leader>ve :vsplit $MYVIMRC<cr>
 nnoremap <Leader>vs :source $MYVIMRC<cr>
 nnoremap <Leader>cs :split ~/config/cheat_sheet.md<cr>
 nnoremap <leader>r :set relativenumber!<cr>
+nnoremap H ^
+onoremap H ^
+nnoremap L $
+onoremap L $
 " }}}
 
 " Vim Test  ---------------------- {{{
@@ -41,9 +45,9 @@ let test#strategy = "dispatch"
 " File ---------------------- {{{
 nnoremap <leader>fy :let @" = expand("%")<cr>
 
-function CopyFile()
+function! CopyFile()
     call inputsave()
-    let l:name = input('File name: ')
+    let l:name = input("File name: ")
     call inputrestore()
 
     let l:fileName = expand("%:h") . "/" . l:name . "." .  expand("%:e")
@@ -52,7 +56,7 @@ function CopyFile()
     execute "redraw!"
     execute "edit " . l:fileName
 endfunction
-nnoremap <leader> fc :call CopyFile<cr>
+nnoremap <leader>fc :call CopyFile()<cr>
 " }}}
 
 " Searching ---------------------- {{{
@@ -66,10 +70,11 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
    let g:ctrlp_use_caching = 0
 endif
+" }}}
 
-" Ag Bindings
+" Ag Bindings {{{
 augroup Ag
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
     nnoremap <leader>/ :Ag<SPACE>
     nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 augroup END
@@ -106,6 +111,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
 Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
+Plugin 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
 
 " Elixir
 Plugin 'slashmili/alchemist.vim'
@@ -138,6 +144,16 @@ let g:airline_powerline_fonts=1
 " CtrlP ---------------------- {{{
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_working_path_mode = 0 "Use directory vim was started in as root directory
+
+nnoremap <leader>p :call SearchDirectoryToggle()<cr>
+
+function! SearchDirectoryToggle()
+    if g:ctrlp_working_path_mode . 1 ==? 'ra1'
+        let g:ctrlp_working_path_mode = 0
+    else
+        let g:ctrlp_working_path_mode = 'ra'
+    endif
+endfunction
 " }}}
 
 " Slime ---------------------- {{{
