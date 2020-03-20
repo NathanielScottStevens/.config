@@ -112,6 +112,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
 Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
 Plugin 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
+Plugin 'vimwiki/vimwiki'
 
 " Elixir
 Plugin 'slashmili/alchemist.vim'
@@ -171,4 +172,9 @@ let g:haskell_indent_disable = 1
 augroup elixir 
     autocmd BufNewFile *.exs :set filetype=elixir<cr>
 augroup END
+" }}}
+
+" VimWiki ---------------------- {{{
+let g:vimwiki_list = [{'path': '~/notes/',
+            \ 'syntax': 'markdown', 'ext': '.md'}]
 " }}}
