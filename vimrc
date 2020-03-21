@@ -183,7 +183,8 @@ function! ZettelkastenGetTitle()
 endfunction
 
 function! ZettelkastenGetFileName(title)
-    return strftime("%Y%m%d%H%M") . "_" . a:title . ".md"
+    let l:fileTitle = substitute(a:title, " ", "_", "g")
+    return strftime("%Y%m%d%H%M") . "_" . l:fileTitle . ".md"
 endfunction
 
 function! ZettelkastenEditNewNote(file, title)
