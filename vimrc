@@ -112,7 +112,6 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
 Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
 Plugin 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
-Plugin 'vimwiki/vimwiki'
 
 " Elixir
 Plugin 'slashmili/alchemist.vim'
@@ -174,7 +173,41 @@ augroup elixir
 augroup END
 " }}}
 
-" VimWiki ---------------------- {{{
-let g:vimwiki_list = [{'path': '~/notes/',
-            \ 'syntax': 'markdown', 'ext': '.md'}]
+" Zettelkasten ---------------------- {{{
+function! ZettelkastenGetTitle()
+    call inputsave()
+    let l:name = input("Title: ")
+    call inputrestore()
+
+    return l:name
+endfunction
+
+function! ZettelkastenGetFileName(title)
+    return strftime("%Y%m%d%H%M") . "_" . a:title . ".md"
+endfunction
+
+function! ZettelkastenEditNewNote(file, title)
+    execute "edit " . a:file
+    call setline(1, "# " . a:title)
+    call setline(2, a:file)
+    call setline(3, "## Tags")
+    call setline(4, "## Links")
+endfunction
+
+function! ZettelkastenNewLink()
+    let l:title = ZettelkastenGetTitle()
+    let l:fileName = ZettelkastenGetFileName(l:title)
+    let l:linkLine = search('## Link')
+    execute "normal! " . l:linkLine . "ggo[" . l:fileName . "](" . l:fileName . ")\<esc>"
+    call ZettelkastenEditNewNote(l:fileName, l:title)
+endfunction
+
+function! ZettelkastenNewNote()
+    let l:title = ZettelkastenGetTitle()
+    let l:fileName = ZettelkastenGetFileName(l:title)
+    call ZettelkastenEditNewNote(l:fileName, l:title)
+endfunction
+
+nnoremap <leader>nn :call ZettelkastenNewNote()<cr>
+nnoremap <leader>nl :call ZettelkastenNewLink()<cr>
 " }}}
