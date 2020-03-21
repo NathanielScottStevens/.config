@@ -190,14 +190,16 @@ function! ZettelkastenEditNewNote(file, title)
     execute "edit " . a:file
     call setline(1, "# " . a:title)
     call setline(2, a:file)
-    call setline(3, "## Tags")
-    call setline(4, "## Links")
+    call setline(3, '')
+    call setline(4, "*Links:*")
+    call setline(5, '')
+    call setline(6, "---")
 endfunction
 
 function! ZettelkastenNewLink()
     let l:title = ZettelkastenGetTitle()
     let l:fileName = ZettelkastenGetFileName(l:title)
-    let l:linkLine = search('## Link')
+    let l:linkLine = search('\*Links:\*')
     execute "normal! " . l:linkLine . "ggo[" . l:fileName . "](" . l:fileName . ")\<esc>"
     call ZettelkastenEditNewNote(l:fileName, l:title)
 endfunction
