@@ -195,6 +195,7 @@ function! ZettelkastenEditNewNote(file, title)
     call setline(4, "*Links:*")
     call setline(5, '')
     call setline(6, "---")
+    call setpos('.', [0, 7, 1, 0])
 endfunction
 
 function! ZettelkastenNewLink()
