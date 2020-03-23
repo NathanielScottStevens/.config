@@ -6,7 +6,7 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set autoindent
-set clipboard=unnamed
+set clipboard^=unnamed,unnamedplus
 set hidden
 set foldtext=getline(v:foldstart)
 set foldlevel=99
