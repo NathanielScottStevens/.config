@@ -43,7 +43,7 @@ let test#strategy = "dispatch"
 " }}}
 
 " File ---------------------- {{{
-nnoremap <leader>fy :let @" = expand("%")<cr>
+nnoremap <leader>fy :let @* = expand("%")<cr>
 
 function! CopyFile()
     call inputsave()
