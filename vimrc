@@ -28,6 +28,7 @@ nnoremap <Leader>ve :vsplit $MYVIMRC<cr>
 nnoremap <Leader>vs :source $MYVIMRC<cr>
 nnoremap <Leader>cs :split ~/config/cheat_sheet.md<cr>
 nnoremap <leader>r :set relativenumber!<cr>
+nnoremap <leader>s :set spell!<cr>
 nnoremap H ^
 onoremap H ^
 nnoremap L $
