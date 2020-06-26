@@ -16,3 +16,6 @@ PATH=$PATH:/Users/nathaniel.stevens/.local/bin
 
 # GIT
 alias gs="git status"
+
+# Elixir
+export ERL_AFLAGS="-kernel shell_history enabled"

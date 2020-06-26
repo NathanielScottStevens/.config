@@ -31,16 +31,26 @@ nnoremap <leader>r :set relativenumber!<cr>
 nnoremap <leader>s :set spell!<cr>
 nnoremap H ^
 onoremap H ^
+vnoremap H ^
 nnoremap L $
 onoremap L $
+vnoremap L $
 " }}}
 
 " Vim Test  ---------------------- {{{
-nnoremap <silent> <leader>tt :TestNearest<CR>
-nnoremap <silent> <leader>tb :TestFile<CR>
-nnoremap <silent> <leader>ta :TestSuite<CR>
-nnoremap <silent> <leader>tr :TestLast<CR>
-let test#strategy = "dispatch"
+function! DeleteOldTestBuffer()
+    let l:buffer = bufnr('mix test')
+    if (l:buffer != -1)
+        execute "bdelete " . l:buffer
+    endif
+endfunction
+
+nnoremap <silent> <leader>tt :call DeleteOldTestBuffer()\|TestNearest<CR>
+nnoremap <silent> <leader>tb :call DeleteOldTestBuffer()\|TestFile<CR>
+nnoremap <silent> <leader>ta :call DeleteOldTestBuffer()\|TestSuite<CR>
+nnoremap <silent> <leader>tr :call DeleteOldTestBuffer()\|TestLast<CR>
+let test#strategy = "vimterminal"
+let test#vim#term_position = "belowright"
 " }}}
 
 " File ---------------------- {{{
@@ -115,7 +125,7 @@ Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
 Plugin 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
 
 " Elixir
-Plugin 'slashmili/alchemist.vim'
+" Plugin 'slashmili/alchemist.vim'
 Plugin 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
 Plugin 'mhinz/vim-mix-format'
 
@@ -215,4 +225,13 @@ endfunction
 
 nnoremap <leader>nn :call ZettelkastenNewNote()<cr>
 nnoremap <leader>nl :call ZettelkastenNewLink()<cr>
+
+function! GetLinks()
+   execute "silent! grep! % | cwindow"
+   execute "redraw!"
+endfunction
+
+augroup zettel
+    autocmd BufWinEnter */notes/*.md call GetLinks()
+augroup END
 " }}}
