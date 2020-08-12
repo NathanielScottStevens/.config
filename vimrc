@@ -231,7 +231,7 @@ function! GetLinks()
    execute "redraw!"
 endfunction
 
-augroup zettel
-    autocmd BufWinEnter */notes/*.md call GetLinks()
-augroup END
+" augroup zettel
+"     autocmd BufWinEnter */notes/*.md call GetLinks()
+" augroup END
 " }}}

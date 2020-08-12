@@ -2,20 +2,16 @@
 ZSH_THEME="agnoster"
 HYPHEN_INSENSITIVE="true"
 plugins=(git)
-source $ZSH/oh-my-zsh.sh
-
-# ASDF
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
 # AWS
 export AWS_PROFILE=default
 
 # BIN
-PATH=$PATH:/Users/nathaniel.stevens/.local/bin
-
-# GIT
-alias gs="git status"
+PATH=$PATH:~/bin
 
 # Elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+# MISC
+alias s="source ~/.zshrc"

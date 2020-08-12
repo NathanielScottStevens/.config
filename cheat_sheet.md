@@ -1,6 +1,9 @@
 # Cheat Sheet
 
 ## Vim
+### netrw
+Create new file
+`%`
 
 ### Tabs
 Create new tab
