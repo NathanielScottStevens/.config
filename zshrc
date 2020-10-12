@@ -10,6 +10,10 @@ export AWS_PROFILE=default
 # BIN
 PATH=$PATH:~/bin
 
+# GIT
+alias gs="git status"
+alias gc="git checkout"
+
 # Elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
 

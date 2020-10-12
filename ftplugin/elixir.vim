@@ -1,5 +1,5 @@
 setlocal shiftwidth=2 softtabstop=2 expandtab 
-setlocal foldmethod=syntax foldlevel=1
+setlocal foldmethod=syntax
 iabbrev ii \|> IO.inspect(label: "<c-r>=@%<cr>:<c-r>=line(".")<cr>")
 setlocal makeprg=mix\ compile
 nnoremap <leader><leader>c :make<cr>

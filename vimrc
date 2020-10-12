@@ -125,15 +125,15 @@ Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
 Plugin 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
 
 " Elixir
-" Plugin 'slashmili/alchemist.vim'
+Plugin 'slashmili/alchemist.vim'
 Plugin 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
 Plugin 'mhinz/vim-mix-format'
-
 
 " Haskell
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'alx741/vim-hindent' "Runs hindent format on save
 Plugin 'jpalardy/vim-slime' "Not for Haskell specifically but used to send code to repl
+
 call vundle#end()            
 
 filetype plugin indent on   
@@ -235,3 +235,4 @@ endfunction
 "     autocmd BufWinEnter */notes/*.md call GetLinks()
 " augroup END
 " }}}
+
