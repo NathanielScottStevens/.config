@@ -10,6 +10,7 @@ set clipboard^=unnamed,unnamedplus
 set hidden
 set foldtext=getline(v:foldstart)
 set foldlevel=99
+set backspace=indent,eol,start
 " }}}
 
 " Color settings ---------------------- {{{
