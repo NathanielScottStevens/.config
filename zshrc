@@ -1,6 +1,7 @@
 # ZSH
 ZSH_THEME="powerlevel10k/powerlevel10k"
 bindkey -v # vim mode
+bindkey -M viins 'jk' vi-cmd-mode
 
 # AWS
 export AWS_PROFILE=default
