@@ -1,8 +1,6 @@
 # ZSH
-ZSH_THEME="agnoster"
-HYPHEN_INSENSITIVE="true"
-plugins=(git)
-source ~/.oh-my-zsh/oh-my-zsh.sh
+ZSH_THEME="powerlevel10k/powerlevel10k"
+bindkey -v # vim mode
 
 # AWS
 export AWS_PROFILE=default
@@ -22,3 +20,4 @@ alias as="alias | grep "
 
 # MISC
 alias s="source ~/.zshrc"
+
