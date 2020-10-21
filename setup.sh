@@ -4,6 +4,7 @@ ln -s ~/config/tmux.conf ~/.tmux.conf
 ln -s ~/config/vimrc ~/.vimrc
 ln -s ~/config/ftplugin ~/.vim/ftplugin
 ln -s ~/config/spell ~/.vim/spell
+ln -s ~/config/gitignore ~/.gitignore
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo "source ~/config/zshrc" >> ~/.zshrc
