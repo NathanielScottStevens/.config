@@ -18,6 +18,9 @@ set background=dark
 colorscheme desert
 highlight QuickFixLine ctermbg=234
 highlight Folded ctermfg=gray ctermbg=none
+highlight MatchParen ctermfg=white
+highlight SpellBad ctermfg=black
+highlight Pmenu ctermbg=gray
 " }}}
 
 " Mappings  ---------------------- {{{
@@ -124,11 +127,13 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
 Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
 Plugin 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
+Plugin 'ludovicchabant/vim-gutentags'
 
 " Elixir
-Plugin 'slashmili/alchemist.vim'
+" Plugin 'slashmili/alchemist.vim'
 Plugin 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
-Plugin 'mhinz/vim-mix-format'
+" Plugin 'mhinz/vim-mix-format'
+Plugin 'neoclide/coc.nvim', {'pinned': 1} " Need to checkout 'release' branch
 
 " Haskell
 Plugin 'neovimhaskell/haskell-vim'
@@ -179,7 +184,7 @@ let g:haskell_indent_disable = 1
 " }}}
 
 " Elixir ---------------------- {{{
-" let g:mix_format_on_save = 1
+let g:mix_format_on_save = 1
 augroup elixir 
     autocmd BufNewFile *.exs :set filetype=elixir<cr>
 augroup END
@@ -236,4 +241,3 @@ endfunction
 "     autocmd BufWinEnter */notes/*.md call GetLinks()
 " augroup END
 " }}}
-
