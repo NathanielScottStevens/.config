@@ -53,7 +53,7 @@ nnoremap <silent> <leader>tt :call DeleteOldTestBuffer()\|TestNearest<CR>
 nnoremap <silent> <leader>tb :call DeleteOldTestBuffer()\|TestFile<CR>
 nnoremap <silent> <leader>ta :call DeleteOldTestBuffer()\|TestSuite<CR>
 nnoremap <silent> <leader>tr :call DeleteOldTestBuffer()\|TestLast<CR>
-let test#strategy = "vimterminal"
+let test#strategy = "neovim"
 let test#vim#term_position = "belowright"
 " }}}
 

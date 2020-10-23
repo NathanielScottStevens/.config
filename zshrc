@@ -23,3 +23,6 @@ alias as="alias | grep "
 # MISC
 alias s="source ~/.zshrc"
 alias po="lsof -i -P -n | grep LISTEN"
+
+# Vim
+alias vim="nvim"
