@@ -1,5 +1,5 @@
 " Basic settings ---------------------- {{{
-syntax on
+syntax enable
 set tabstop=4
 set number
 set shiftwidth=4
@@ -11,11 +11,65 @@ set hidden
 set foldtext=getline(v:foldstart)
 set foldlevel=99
 set backspace=indent,eol,start
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+" }}}
+
+" Vundle ---------------------- {{{
+set nocompatible              
+filetype off                 
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Run :PluginInstall in editor
+Plugin 'gmarik/Vundle.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/html5.vim'
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-vinegar'
+Plugin 'tpope/vim-dispatch'
+Plugin 'janko/vim-test'
+Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
+Plugin 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
+Plugin 'ludovicchabant/vim-gutentags'
+
+" Elixir
+Plugin 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
+Plugin 'neoclide/coc.nvim', {'pinned': 1} " Need to checkout 'release' branch and run :CocInstall coc-elixir
+
+" Haskell
+Plugin 'neovimhaskell/haskell-vim'
+Plugin 'alx741/vim-hindent' "Runs hindent format on save
+Plugin 'jpalardy/vim-slime' "Not for Haskell specifically but used to send code to repl
+
+call vundle#end()            
+
+filetype plugin indent on   
 " }}}
 
 " Color settings ---------------------- {{{
 set background=dark
 colorscheme desert
+autocmd ColorScheme * highlight! link SignColumn LineNr
+highlight SignColumn ctermbg=none
 highlight QuickFixLine ctermbg=234
 highlight Folded ctermfg=gray ctermbg=none
 highlight MatchParen ctermfg=white
@@ -98,51 +152,6 @@ augroup END
 " Quickfix Window ---------------------- {{{
 nnoremap <C-k> :cp<CR>
 nnoremap <C-j> :cn<CR>
-" }}}
-
-" Vundle ---------------------- {{{
-set nocompatible              
-filetype off                 
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Run :PluginInstall in editor
-Plugin 'gmarik/Vundle.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/html5.vim'
-Plugin 'vim-scripts/paredit.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'guns/vim-clojure-static'
-Plugin 'guns/vim-clojure-highlight'
-Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-dispatch'
-Plugin 'janko/vim-test'
-Plugin 'tpope/vim-obsession' "Allows vim sessions to be restored
-Plugin 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
-Plugin 'ludovicchabant/vim-gutentags'
-
-" Elixir
-" Plugin 'slashmili/alchemist.vim'
-Plugin 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
-" Plugin 'mhinz/vim-mix-format'
-Plugin 'neoclide/coc.nvim', {'pinned': 1} " Need to checkout 'release' branch
-
-" Haskell
-Plugin 'neovimhaskell/haskell-vim'
-Plugin 'alx741/vim-hindent' "Runs hindent format on save
-Plugin 'jpalardy/vim-slime' "Not for Haskell specifically but used to send code to repl
-
-call vundle#end()            
-
-filetype plugin indent on   
 " }}}
 
 " Vinegar ---------------------- {{{
