@@ -36,6 +36,10 @@ Jump to definition `<C-]>`
 - `ysiw)`: surround word with parens
 - `vwS)`: go into visual mode, highlight a word, surround with parens
 
+## Increase/Decrease Numbers
+- Increase: `ctrl-a`
+- Decrease: `ctrl-x`
+
 ## Tmux
 Switch between sessions
 ```
