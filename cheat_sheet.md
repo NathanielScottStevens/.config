@@ -30,6 +30,16 @@ Auto Completion `<C-x><C-o>`
 View Docs `K`
 Jump to definition `<C-]>`
 
+### Surround
+- `cs[{`: change surrounding `[` to `{`
+- `ds(`: delete surrounding parens
+- `ysiw)`: surround word with parens
+- `vwS)`: go into visual mode, highlight a word, surround with parens
+
+## Increase/Decrease Numbers
+- Increase: `ctrl-a`
+- Decrease: `ctrl-x`
+
 ## Tmux
 Switch between sessions
 ```
