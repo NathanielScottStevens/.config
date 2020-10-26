@@ -1,6 +1,6 @@
 # ZSH
 export ZSH_THEME="powerlevel10k/powerlevel10k"
-bindkey -v # vim mode
+export plugins=(git vi-mode)
 bindkey -M viins 'jk' vi-cmd-mode
 
 # AWS

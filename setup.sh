@@ -26,6 +26,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install tree
   brew install tmux
   brew install watch
+  brew install ag
   brew cask install iterm2
 
   brew install fzf

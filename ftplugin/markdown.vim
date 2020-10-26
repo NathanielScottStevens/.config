@@ -4,7 +4,7 @@ iabbrev ref *Reference:*
 " Turn word into link
 nmap <leader><leader>l ysiW]ya[Epcs[)
 nnoremap <leader>fy :let @* = "[" . expand("%") . "](" . expand("%") . ")" \| let @+ = "[" . expand("%") . "](" . expand("%") . ")"<cr>
-nnoremap <leader><leader>r :Ag %<cr>
+nnoremap <leader><leader>r :call GetLinks()<cr>
 
 " Add a dash for list items with `o`
 function! AddDashIfList() 

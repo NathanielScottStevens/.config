@@ -141,9 +141,9 @@ if executable('ag')
 endif
 " }}}
 
-" Ag Bindings {{{
+" Ag Bindings ---------------------- {{{
 augroup Ag
-    command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    command! -nargs=+ -complete=tag Ag silent! grep! <args> | cwindow | redraw!
     nnoremap <leader>/ :Ag<SPACE>
     nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 augroup END
@@ -242,7 +242,10 @@ nnoremap <leader>nn :call ZettelkastenNewNote()<cr>
 nnoremap <leader>nl :call ZettelkastenNewLink()<cr>
 
 function! GetLinks()
-   execute "silent! grep! % | cwindow"
+   execute "silent! grep! %"
+   execute 'g/\[.\+\]/caddexpr matchstr(getline("."), "[A-Za-z0-9._]\\+") . ":" . line(".") .  ":" . getline(".")'
+   execute "noh"
+   execute "cwindow"
    execute "redraw!"
 endfunction
 
