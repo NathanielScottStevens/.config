@@ -16,6 +16,7 @@ alias gcoa="git checkout ."
 
 # Elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
+alias mp="mix phx.server"
 
 # Alias
 alias as="alias | grep "

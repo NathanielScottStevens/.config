@@ -1,4 +1,6 @@
 *.swp
 *.swo
-*.formatter
+.formatter*
 Session.vim
+tags
+.DS_Store
