@@ -12,7 +12,7 @@ git config --global merge.tool vimdiff
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo "source ~/config/zshrc" >> ~/.zshrc
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k  
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -31,9 +31,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install tmux
   brew install watch
   brew install ag
+  brew install neovim
   brew cask install iterm2
+  brew install brew cask install google-chrome
+  brew cask install rectangle
 
   brew install fzf
   $(brew --prefix)/opt/fzf/install
 fi
-  
+

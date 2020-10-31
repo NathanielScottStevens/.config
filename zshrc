@@ -27,3 +27,9 @@ alias po="lsof -i -P -n | grep LISTEN"
 
 # VIM
 alias vim="nvim"
+
+# Z
+. $(brew --prefix)/etc/profile.d/z.sh
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
