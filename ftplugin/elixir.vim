@@ -10,6 +10,7 @@ nnoremap <leader><leader>c :make<cr>
 nnoremap <leader><leader>d :cexpr system('mix dialyzer')<cr>
 onoremap m :<c-u>normal! F%vf{%<cr> " Operate on elixir map
 nnoremap <leader><leader>ve :vsplit ~/config/ftplugin/elixir.vim<cr>
+nnoremap <leader><leader>fa :setlocal foldlevel=1<cr>
 
 " Coc ---------------------- {{{
 " TextEdit fail if hidden is not set.

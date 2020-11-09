@@ -32,6 +32,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install watch
   brew install ag
   brew install neovim
+  brew install ctags
   brew cask install iterm2
   brew install brew cask install google-chrome
   brew cask install rectangle

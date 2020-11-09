@@ -1,6 +1,6 @@
 # ZSH
 export ZSH_THEME="powerlevel10k/powerlevel10k"
-export plugins=(git vi-mode)
+export plugins=(git vi-mode asdf fzf)
 bindkey -M viins 'jk' vi-cmd-mode
 
 # AWS
@@ -17,6 +17,8 @@ alias gcoa="git checkout ."
 # Elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
 alias mp="mix phx.server"
+alias mpi="iex -S mix phx.server"
+alias mdg="mix deps.get"
 
 # Alias
 alias as="alias | grep "
@@ -33,3 +35,6 @@ alias vim="nvim"
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# DOCKER
+alias dps="docker ps"

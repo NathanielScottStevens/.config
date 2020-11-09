@@ -71,6 +71,7 @@ highlight Folded ctermfg=gray ctermbg=none
 highlight MatchParen ctermfg=white
 highlight SpellBad ctermfg=black
 highlight Pmenu ctermbg=gray
+highlight Search ctermfg=black
 " }}}
 
 " Mappings  ---------------------- {{{
@@ -83,6 +84,7 @@ nnoremap <Leader>vs :source $MYVIMRC<cr>
 nnoremap <Leader>cs :split ~/config/cheat_sheet.md<cr>
 nnoremap <leader>r :set relativenumber!<cr>
 nnoremap <leader>s :set spell!<cr>
+nnoremap <leader>h :set hlsearch!<cr>
 nnoremap H ^
 onoremap H ^
 vnoremap H ^
@@ -92,17 +94,10 @@ vnoremap L $
 " }}}
 
 " Vim Test  ---------------------- {{{
-function! DeleteOldTestBuffer()
-    let l:buffer = bufnr('mix test')
-    if (l:buffer != -1)
-        execute "bdelete " . l:buffer
-    endif
-endfunction
-
-nnoremap <silent> <leader>tt :call DeleteOldTestBuffer()\|TestNearest<CR>
-nnoremap <silent> <leader>tb :call DeleteOldTestBuffer()\|TestFile<CR>
-nnoremap <silent> <leader>ta :call DeleteOldTestBuffer()\|TestSuite<CR>
-nnoremap <silent> <leader>tr :call DeleteOldTestBuffer()\|TestLast<CR>
+nnoremap <silent> <leader>tt :TestNearest<CR>
+nnoremap <silent> <leader>tb :TestFile<CR>
+nnoremap <silent> <leader>ta :TestSuite<CR>
+nnoremap <silent> <leader>tr :TestLast<CR>
 let test#strategy = "neovim"
 let test#vim#term_position = "belowright"
 " }}}
