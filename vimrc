@@ -11,6 +11,7 @@ set hidden
 set foldtext=getline(v:foldstart)
 set foldlevel=99
 set backspace=indent,eol,start
+set nocscopetag "Prevent tag jumps from not showing multiple tag hits
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -40,12 +41,14 @@ Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher' " Faster/more-specific matching, need python (pip3 install pynvim)
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-dispatch'
 Plug 'janko/vim-test'
 Plug 'tpope/vim-obsession' "Allows vim sessions to be restored
 Plug 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags' "tag generation
+Plug 'benmills/vimux' "Tmux
 
 " Elixir
 Plug 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
@@ -64,6 +67,7 @@ filetype plugin indent on
 " Color settings ---------------------- {{{
 set background=dark
 colorscheme desert
+" https://vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim?file=Xterm-color-table.png
 autocmd ColorScheme * highlight! link SignColumn LineNr
 highlight SignColumn ctermbg=none
 highlight QuickFixLine ctermbg=234
@@ -71,7 +75,11 @@ highlight Folded ctermfg=gray ctermbg=none
 highlight MatchParen ctermfg=white
 highlight SpellBad ctermfg=black
 highlight Pmenu ctermbg=gray
-highlight Search ctermfg=black
+highlight DiffAdd     ctermfg=black 
+highlight DiffChange   ctermfg=black 
+highlight DiffRemove   ctermfg=black 
+highlight DiffText   ctermfg=black
+highlight Search   ctermbg=17
 " }}}
 
 " Mappings  ---------------------- {{{
@@ -98,8 +106,16 @@ nnoremap <silent> <leader>tt :TestNearest<CR>
 nnoremap <silent> <leader>tb :TestFile<CR>
 nnoremap <silent> <leader>ta :TestSuite<CR>
 nnoremap <silent> <leader>tr :TestLast<CR>
-let test#strategy = "neovim"
+let test#strategy = "vimux"
 let test#vim#term_position = "belowright"
+" }}}
+
+" Vim Test  ---------------------- {{{
+" Close vim tmux runner opened by VimuxRunCommand
+map <Leader>vq :VimuxCloseRunner<CR>
+
+" Zoom the runner pane (use <bind-key> z to restore runner pane)
+map <Leader>vz :call VimuxZoomRunner()<CR>
 " }}}
 
 " File ---------------------- {{{
@@ -136,7 +152,7 @@ endif
 augroup Ag
     command! -nargs=+ -complete=tag Ag silent! grep! <args> | cwindow | redraw!
     nnoremap <leader>/ :Ag<SPACE>
-    nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+    nnoremap <leader>* :Ag "\b<C-R><C-W>\b"<CR>:cw<CR>
 augroup END
 " }}}
 
@@ -156,11 +172,13 @@ augroup END
 " Airline ---------------------- {{{
 let g:airline_theme='papercolor'
 let g:airline_powerline_fonts=1
+let g:airline#extensions#branch#displayed_head_limit = 5
 " }}}
 
 " CtrlP ---------------------- {{{
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_working_path_mode = 0 "Use directory vim was started in as root directory
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } " Use pymatcher
 
 nnoremap <leader>p :call SearchDirectoryToggle()<cr>
 

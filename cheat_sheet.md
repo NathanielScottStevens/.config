@@ -46,6 +46,7 @@ Switch between sessions
 C-z (  previous session
 C-z s  choose session from a list
 ```
+Zoom `<prefix> z`
 
 ## Misc
 Find and replace

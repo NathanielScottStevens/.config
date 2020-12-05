@@ -163,7 +163,9 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-augroup elixir_file_save
-  autocmd BufWrite *.ex,*.exs :call CocAction('format')
-augroup end
+"Format Buffer
+nnoremap <leader>fb :call CocAction('format')<CR>
+" augroup elixir_file_save
+"   autocmd BufWrite *.ex,*.exs :call CocAction('format')
+" augroup end
 " }}}

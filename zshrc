@@ -11,7 +11,7 @@ PATH=$PATH:~/bin
 
 # GIT
 alias gs="git status"
-alias gc="git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout"
+alias gcos="git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout"
 alias gcoa="git checkout ."
 
 # Elixir
@@ -19,6 +19,9 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 alias mp="mix phx.server"
 alias mpi="iex -S mix phx.server"
 alias mdg="mix deps.get"
+alias mem="mix ecto.migrate"
+alias gtn="grep '^\s\+\d\+)'"
+alias mt="mix test"
 
 # Alias
 alias as="alias | grep "
@@ -38,3 +41,4 @@ alias vim="nvim"
 
 # DOCKER
 alias dps="docker ps"
+alias dk="docker kill"
