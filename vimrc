@@ -101,6 +101,13 @@ onoremap L $
 vnoremap L $
 " }}}
 
+" Fugitive ---------------------- {{{
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gr :Gread<CR>
+" }}}
+
 " Vim Test  ---------------------- {{{
 nnoremap <silent> <leader>tt :TestNearest<CR>
 nnoremap <silent> <leader>tb :TestFile<CR>

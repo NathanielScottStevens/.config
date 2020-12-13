@@ -20,6 +20,7 @@ alias mp="mix phx.server"
 alias mpi="iex -S mix phx.server"
 alias mdg="mix deps.get"
 alias mem="mix ecto.migrate"
+alias mer="mix ecto.reset"
 alias gtn="grep '^\s\+\d\+)'"
 alias mt="mix test"
 
