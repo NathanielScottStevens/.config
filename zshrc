@@ -13,6 +13,7 @@ PATH=$PATH:~/bin
 alias gs="git status"
 alias gcos="git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout"
 alias gcoa="git checkout ."
+alias glogt="glod | grep 'Nathaniel\|tag' | less"
 
 # Elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -21,6 +22,7 @@ alias mpi="iex -S mix phx.server"
 alias mdg="mix deps.get"
 alias mem="mix ecto.migrate"
 alias mer="mix ecto.reset"
+alias megm="mix ecto.gen.migration"
 alias gtn="grep '^\s\+\d\+)'"
 alias mt="mix test"
 
@@ -43,3 +45,6 @@ alias vim="nvim"
 # DOCKER
 alias dps="docker ps"
 alias dk="docker kill"
+
+# POMODORO
+alias pom="sleep 25m && osascript -e 'display notification \"Step away!\" with title \"Pomodoro Over\"'"

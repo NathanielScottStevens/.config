@@ -2,5 +2,5 @@
 *.swo
 .formatter*
 Session.vim
-tags
+tags*
 .DS_Store

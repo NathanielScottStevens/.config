@@ -36,9 +36,18 @@ Jump to definition `<C-]>`
 - `ysiw)`: surround word with parens
 - `vwS)`: go into visual mode, highlight a word, surround with parens
 
-## Increase/Decrease Numbers
+### CtrlP
+Once the finder is open:
+- <c-f> and <c-b> to cycle modes
+- <c-d> to switch to filename search
+- <c-r> to use regex mode (good for finding full word matches)
+
+### Increase/Decrease Numbers
 - Increase: `ctrl-a`
 - Decrease: `ctrl-x`
+
+### Case Insensitive Search
+Add `\c` anywhere in the search string
 
 ## Tmux
 Switch between sessions

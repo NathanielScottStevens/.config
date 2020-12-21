@@ -5,14 +5,52 @@ iabbrev ii \|> IO.inspect(label: "<c-r>=@%<cr>:<c-r>=line(".")<cr>")
 iabbrev :o {:ok, }<Left>
 iabbrev :e {:error, }<Left>
 
+function! GetModuleName()
+  let moduleDeclaration = getline(1)
+  return split(moduleDeclaration)[1]
+endfunction
+
+function! YankModuleName()
+  let moduleName = GetModuleName()
+  let @* = moduleName
+  let @+ = moduleName
+endfunction
+
+function! GetAllCallers()
+  let moduleName = GetModuleName()
+  execute "new | 0read !mix xref callers " . moduleName
+endfunction
+
+function! GetAllReferences()
+  execute "new | 0read !mix xref graph --only-nodes --source " . expand('%')
+endfunction
+
+function! SendTextToRepl()
+  let text = substitute(@*, "\n\\s*|>", " |>\n", "g")
+  call VimuxSendText(text)
+endfunction
+
 setlocal makeprg=mix\ compile
 nnoremap <leader><leader>c :make<cr>
 nnoremap <leader><leader>d :cexpr system('mix dialyzer')<cr>
 onoremap m :<c-u>normal! F%vf{%<cr> " Operate on elixir map
 nnoremap <leader><leader>ve :vsplit ~/config/ftplugin/elixir.vim<cr>
 nnoremap <leader><leader>fa :setlocal foldlevel=1<cr>
-" Copy module name
-nnoremap <leader><leader>my :let view = winsaveview()<CR>ggwyE<C-O>:let @* = getreg("0") \| let @+ = getreg("0") \| call winrestview(view)<cr>
+
+" Module Mappings
+nnoremap <leader><leader>my :call YankModuleName()<CR>
+nnoremap <leader><leader>mc :call GetAllCallers()<CR>
+nnoremap <leader><leader>mr :call GetAllReferences()<CR>
+nnoremap <leader><leader>mf :vimgrep '^\s*defp\? ' % \| copen \| cc<CR>
+nnoremap <leader><leader>ma :vimgrep '^\s*@' % \| copen \| cc<CR>
+nnoremap <leader><leader>mt :vimgrep '^\s*test' % \| copen \| cc<CR>
+nnoremap <leader><leader>md :vimgrep '^\s*describe' % \| copen \| cc<CR>
+
+" Vimux
+nnoremap <leader><leader>ro :call VimuxOpenRunner() \| call VimuxRunCommand("echo; iex")<CR>
+nnoremap <leader><leader>ra :call VimuxOpenRunner() \| call VimuxRunCommand("echo; iex -S mix")<CR>
+nnoremap <leader><leader>rr :call VimuxRunCommand("recompile")<CR>
+nnoremap <leader><leader>rs :call SendTextToRepl()<CR>
 
 " Coc ---------------------- {{{
 " TextEdit fail if hidden is not set.

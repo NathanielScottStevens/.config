@@ -59,6 +59,9 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent' "Runs hindent format on save
 Plug 'jpalardy/vim-slime' "Not for Haskell specifically but used to send code to repl
 
+" Racket
+Plug 'wlangstroth/vim-racket'
+
 call plug#end()
 
 filetype plugin indent on   
@@ -186,7 +189,6 @@ let g:airline#extensions#branch#displayed_head_limit = 5
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_working_path_mode = 0 "Use directory vim was started in as root directory
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } " Use pymatcher
-
 nnoremap <leader>p :call SearchDirectoryToggle()<cr>
 
 function! SearchDirectoryToggle()
