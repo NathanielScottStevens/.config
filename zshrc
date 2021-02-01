@@ -14,6 +14,7 @@ alias gs="git status"
 alias gcos="git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout"
 alias gcoa="git checkout ."
 alias glogt="glod | grep 'Nathaniel\|tag' | less"
+alias gtodo="git diff develop -S TODO"
 
 # Elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -24,7 +25,8 @@ alias mem="mix ecto.migrate"
 alias mer="mix ecto.reset"
 alias megm="mix ecto.gen.migration"
 alias gtn="grep '^\s\+\d\+)'"
-alias mt="mix test"
+alias mt="mix test | tee results.test"
+alias mtn="mix test | gtn"
 
 # Alias
 alias as="alias | grep "

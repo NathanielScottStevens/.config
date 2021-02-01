@@ -1,9 +1,11 @@
 setlocal shiftwidth=2 softtabstop=2 expandtab 
 setlocal foldmethod=syntax
+set foldlevel=99
 
 iabbrev ii \|> IO.inspect(label: "<c-r>=@%<cr>:<c-r>=line(".")<cr>")
-iabbrev :o {:ok, }<Left>
-iabbrev :e {:error, }<Left>
+iabbrev :o {:ok,}<Left>
+iabbrev :e {:error,}<Left>
+iabbrev #t # TODO
 
 function! GetModuleName()
   let moduleDeclaration = getline(1)
@@ -30,27 +32,28 @@ function! SendTextToRepl()
   call VimuxSendText(text)
 endfunction
 
-setlocal makeprg=mix\ compile
-nnoremap <leader><leader>c :make<cr>
-nnoremap <leader><leader>d :cexpr system('mix dialyzer')<cr>
-onoremap m :<c-u>normal! F%vf{%<cr> " Operate on elixir map
-nnoremap <leader><leader>ve :vsplit ~/config/ftplugin/elixir.vim<cr>
-nnoremap <leader><leader>fa :setlocal foldlevel=1<cr>
+" setlocal makeprg=mix\ compile
+" nnoremap <leader><leader>c :make<cr>
+nnoremap <buffer> <leader><leader>c :call VimuxOpenRunner() \| call VimuxRunCommand("echo; mix compile")<CR>
+nnoremap <buffer> <leader><leader>d :cexpr system('mix dialyzer')<cr>
+onoremap <buffer> m :<c-u>normal! F%vf{%<cr> " Operate on elixir map
+nnoremap <buffer> <leader><leader>ve :vsplit ~/config/ftplugin/elixir.vim<cr>
+nnoremap <buffer> <leader><leader>fa :setlocal foldlevel=1<cr>
 
 " Module Mappings
-nnoremap <leader><leader>my :call YankModuleName()<CR>
-nnoremap <leader><leader>mc :call GetAllCallers()<CR>
-nnoremap <leader><leader>mr :call GetAllReferences()<CR>
-nnoremap <leader><leader>mf :vimgrep '^\s*defp\? ' % \| copen \| cc<CR>
-nnoremap <leader><leader>ma :vimgrep '^\s*@' % \| copen \| cc<CR>
-nnoremap <leader><leader>mt :vimgrep '^\s*test' % \| copen \| cc<CR>
-nnoremap <leader><leader>md :vimgrep '^\s*describe' % \| copen \| cc<CR>
+nnoremap <buffer> <leader><leader>my :call YankModuleName()<CR>
+nnoremap <buffer> <leader><leader>mc :call GetAllCallers()<CR>
+nnoremap <buffer> <leader><leader>mr :call GetAllReferences()<CR>
+nnoremap <buffer> <leader><leader>mf :vimgrep '^\s*defp\? ' % \| copen \| cc<CR>
+nnoremap <buffer> <leader><leader>ma :vimgrep '^\s*@' % \| copen \| cc<CR>
+nnoremap <buffer> <leader><leader>mt :vimgrep '^\s*test' % \| copen \| cc<CR>
+nnoremap <buffer> <leader><leader>md :vimgrep '^\s*describe' % \| copen \| cc<CR>
 
 " Vimux
-nnoremap <leader><leader>ro :call VimuxOpenRunner() \| call VimuxRunCommand("echo; iex")<CR>
-nnoremap <leader><leader>ra :call VimuxOpenRunner() \| call VimuxRunCommand("echo; iex -S mix")<CR>
-nnoremap <leader><leader>rr :call VimuxRunCommand("recompile")<CR>
-nnoremap <leader><leader>rs :call SendTextToRepl()<CR>
+nnoremap <buffer> <leader><leader>ro :call VimuxOpenRunner() \| call VimuxRunCommand("echo; iex")<CR>
+nnoremap <buffer> <leader><leader>ra :call VimuxOpenRunner() \| call VimuxRunCommand("echo; iex -S mix")<CR>
+nnoremap <buffer> <leader><leader>rr :call VimuxRunCommand("recompile")<CR>
+nnoremap <buffer> <leader><leader>rs :call SendTextToRepl()<CR>
 
 " Coc ---------------------- {{{
 " TextEdit fail if hidden is not set.
@@ -204,7 +207,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "Format Buffer
-nnoremap <leader>fb :call CocAction('format')<CR>
+" nnoremap <leader>fb :call CocAction('format')<CR>
 " augroup elixir_file_save
 "   autocmd BufWrite *.ex,*.exs :call CocAction('format')
 " augroup end

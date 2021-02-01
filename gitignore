@@ -4,3 +4,5 @@
 Session.vim
 tags*
 .DS_Store
+*.orig
+results.test

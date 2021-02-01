@@ -49,6 +49,9 @@ Once the finder is open:
 ### Case Insensitive Search
 Add `\c` anywhere in the search string
 
+### COC
+- scroll hover popup: `C-f C-b`
+
 ## Tmux
 Switch between sessions
 ```

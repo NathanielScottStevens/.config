@@ -2,9 +2,9 @@ setlocal shiftwidth=2 softtabstop=2 tabstop=2
 setlocal spell
 iabbrev ref *Reference:*
 " Turn word into link
-nmap <leader><leader>l ysiW]ya[Epcs[)
-nnoremap <leader>fy :let @* = "[" . expand("%") . "](" . expand("%") . ")" \| let @+ = "[" . expand("%") . "](" . expand("%") . ")"<cr>
-nnoremap <leader><leader>r :call GetLinks()<cr>
+nmap <buffer> <leader><leader>l ysiW]ya[Epcs[)
+nnoremap <buffer> <leader>fy :let @* = "[" . expand("%") . "](" . expand("%") . ")" \| let @+ = "[" . expand("%") . "](" . expand("%") . ")"<cr>
+nnoremap <buffer> <leader><leader>r :call GetLinks()<cr>
 
 " Add a dash for list items with `o`
 function! AddDashIfList() 
@@ -20,7 +20,7 @@ function! AddDashIfList()
     endif
 endfunction
 
-nnoremap o :call AddDashIfList()<CR>
+nnoremap <buffer> o :call AddDashIfList()<CR>
 
 " Todo
 function! ToggleDone() 
@@ -33,6 +33,6 @@ function! ToggleDone()
     endif
 endfunction
 
-nnoremap <leader><leader>t o- [ ] 
-nnoremap <leader><leader><space> :call ToggleDone()<CR>
+nnoremap <buffer> <leader><leader>t o- [ ] 
+nnoremap <buffer> <leader><leader><space> :call ToggleDone()<CR>
 

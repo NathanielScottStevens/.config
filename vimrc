@@ -53,6 +53,7 @@ Plug 'benmills/vimux' "Tmux
 " Elixir
 Plug 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Need to run :CocInstall coc-elixir
+Plug 'mhinz/vim-mix-format'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
@@ -78,10 +79,13 @@ highlight Folded ctermfg=gray ctermbg=none
 highlight MatchParen ctermfg=white
 highlight SpellBad ctermfg=black
 highlight Pmenu ctermbg=gray
-highlight DiffAdd     ctermfg=black 
-highlight DiffChange   ctermfg=black 
-highlight DiffRemove   ctermfg=black 
-highlight DiffText   ctermfg=black
+
+highlight DiffAdd     ctermfg=black ctermbg=lightgreen 
+highlight DiffRemove   ctermfg=black ctermbg=darkmagenta
+highlight DiffDelete   ctermfg=black ctermbg=darkmagenta
+highlight DiffChange   ctermfg=black ctermbg=lightblue
+highlight DiffText   ctermfg=black ctermbg=lightblue
+
 highlight Search   ctermbg=17
 " }}}
 
@@ -112,20 +116,29 @@ nnoremap <leader>gr :Gread<CR>
 " }}}
 
 " Vim Test  ---------------------- {{{
-nnoremap <silent> <leader>tt :TestNearest<CR>
-nnoremap <silent> <leader>tb :TestFile<CR>
-nnoremap <silent> <leader>ta :TestSuite<CR>
-nnoremap <silent> <leader>tr :TestLast<CR>
+nnoremap <silent> <leader>tt :call VimuxOpenRunner() \| TestNearest<CR>
+nnoremap <silent> <leader>tb :call VimuxOpenRunner() \| TestFile<CR>
+nnoremap <silent> <leader>ta :call VimuxOpenRunner() \| TestSuite<CR>
+nnoremap <silent> <leader>tr :call VimuxOpenRunner() \| TestLast<CR>
 let test#strategy = "vimux"
 let test#vim#term_position = "belowright"
 " }}}
 
-" Vim Test  ---------------------- {{{
+" Vimux  ---------------------- {{{
 " Close vim tmux runner opened by VimuxRunCommand
 map <Leader>vq :VimuxCloseRunner<CR>
 
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>vz :call VimuxZoomRunner()<CR>
+
+" Open Runner
+map <Leader>vo :call VimuxOpenRunner()<CR>
+
+" Send command to Runner
+map <Leader>vv :call VimuxPromptCommand()<CR>
+
+" Send command to Runner
+map <Leader>vr :call VimuxRunLastCommand()<CR>
 " }}}
 
 " File ---------------------- {{{
@@ -232,7 +245,7 @@ function! ZettelkastenGetFileName(title)
 endfunction
 
 function! ZettelkastenEditNewNote(file, title)
-    execute "edit " . a:file
+    execute "vsplit " . a:file
     call setline(1, "# " . a:title)
     call setline(2, a:file)
     call setline(3, '')
@@ -270,4 +283,11 @@ endfunction
 " augroup zettel
 "     autocmd BufWinEnter */notes/*.md call GetLinks()
 " augroup END
+" }}}
+
+" Racket ---------------------- {{{
+" Override Racket DSLs so my ftplugin file still works
+augroup RacketLangs
+  autocmd FileType brag,br setlocal filetype=racket
+augroup END
 " }}}
