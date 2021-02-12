@@ -137,7 +137,7 @@ map <Leader>vo :call VimuxOpenRunner()<CR>
 " Send command to Runner
 map <Leader>vv :call VimuxPromptCommand()<CR>
 
-" Send command to Runner
+" Send last command to Runner
 map <Leader>vr :call VimuxRunLastCommand()<CR>
 " }}}
 

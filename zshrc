@@ -28,6 +28,14 @@ alias gtn="grep '^\s\+\d\+)'"
 alias mt="mix test | tee results.test"
 alias mtn="mix test | gtn"
 
+function update_migration() {
+  local migration_file=$1
+  local migration_name=${migration_file:14}
+  local new_time=$(date +"%Y%m%d%H%M%S")
+
+  mv $1 "$new_time$migration_name"
+}
+
 # Alias
 alias as="alias | grep "
 
