@@ -27,6 +27,7 @@ alias megm="mix ecto.gen.migration"
 alias gtn="grep '^\s\+\d\+)'"
 alias mt="mix test | tee results.test"
 alias mtn="mix test | gtn"
+alias mcc="mix coveralls.html | grep -v '0$'"
 
 function update_migration() {
   local migration_file=$1
@@ -56,5 +57,11 @@ alias vim="nvim"
 alias dps="docker ps"
 alias dk="docker kill"
 
-# POMODORO
-alias pom="sleep 25m && osascript -e 'display notification \"Step away!\" with title \"Pomodoro Over\"'"
+# Find Replace
+function find_replace() {
+  local target=$1
+  local replacement=$2
+  local file_ext=$3
+
+  find . -name '*.'${file_ext} -print0 | xargs -0 sed -i "" "s/"${target}"/"${replacement}/"g"
+}

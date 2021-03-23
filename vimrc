@@ -53,6 +53,7 @@ Plug 'benmills/vimux' "Tmux
 " Elixir
 Plug 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Need to run :CocInstall coc-elixir
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 Plug 'mhinz/vim-mix-format'
 
 " Haskell
@@ -62,6 +63,9 @@ Plug 'jpalardy/vim-slime' "Not for Haskell specifically but used to send code to
 
 " Racket
 Plug 'wlangstroth/vim-racket'
+
+" Javascript
+Plug 'mogelbrod/vim-jsonpath' "Get/Search JSON paths
 
 call plug#end()
 
@@ -290,4 +294,12 @@ endfunction
 augroup RacketLangs
   autocmd FileType brag,br setlocal filetype=racket
 augroup END
+" }}}
+
+" JSON ---------------------- {{{
+" JSON path mappings
+" Optionally copy path to a named register (* in this case) when calling :JsonPath
+let g:jsonpath_register = '*'
+au FileType json noremap <buffer> <silent> <leader><leader>p :call jsonpath#echo()<CR>
+au FileType json noremap <buffer> <silent> <leader><leader>g :call jsonpath#goto()<CR>
 " }}}
