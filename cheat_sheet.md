@@ -60,6 +60,9 @@ C-z s  choose session from a list
 ```
 Zoom `<prefix> z`
 
+Save session: `C-Space Ctrl-s`
+Reload session: `C-Space Ctrl-r`
+
 ## Misc
 Find and replace
 `find . -name "*.txt" | xargs sed -i "" "s/alyssa/nathaniel/g"`

@@ -12,6 +12,7 @@ set foldtext=getline(v:foldstart)
 set foldlevel=99
 set backspace=indent,eol,start
 set nocscopetag "Prevent tag jumps from not showing multiple tag hits
+set ignorecase
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -49,6 +50,8 @@ Plug 'tpope/vim-obsession' "Allows vim sessions to be restored
 Plug 'sheerun/vim-polyglot' "Syntax highlighting for (almost) all languages
 Plug 'ludovicchabant/vim-gutentags' "tag generation
 Plug 'benmills/vimux' "Tmux
+Plug 'tyru/open-browser.vim' "Needed for open-browser-github
+Plug 'tyru/open-browser-github.vim'
 
 " Elixir
 Plug 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
@@ -83,6 +86,7 @@ highlight Folded ctermfg=gray ctermbg=none
 highlight MatchParen ctermfg=white
 highlight SpellBad ctermfg=black
 highlight Pmenu ctermbg=gray
+highlight Visual ctermbg=black
 
 highlight DiffAdd     ctermfg=black ctermbg=lightgreen 
 highlight DiffRemove   ctermfg=black ctermbg=darkmagenta
@@ -110,6 +114,7 @@ vnoremap H ^
 nnoremap L $
 onoremap L $
 vnoremap L $
+xnoremap s :sort<cr>
 " }}}
 
 " Fugitive ---------------------- {{{
