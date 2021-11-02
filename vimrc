@@ -124,6 +124,11 @@ nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gr :Gread<CR>
 " }}}
 
+" Vim Diff ---------------------- {{{
+nnoremap <leader>gmr :diffget RE<CR>
+nnoremap <leader>gml :diffget LO<CR>
+" }}}
+
 " Vim Test  ---------------------- {{{
 nnoremap <silent> <leader>tt :call VimuxOpenRunner() \| TestNearest<CR>
 nnoremap <silent> <leader>tb :call VimuxOpenRunner() \| TestFile<CR>
@@ -307,4 +312,16 @@ augroup END
 let g:jsonpath_register = '*'
 au FileType json noremap <buffer> <silent> <leader><leader>p :call jsonpath#echo()<CR>
 au FileType json noremap <buffer> <silent> <leader><leader>g :call jsonpath#goto()<CR>
+" }}}
+
+" Github Open Browser  ---------------------- {{{
+nnoremap <Leader>go :OpenGithubFile<CR>
+xnoremap <Leader>go :'<,'> OpenGithubFile<CR>
+" }}}
+
+" DirEnv ---------------------- {{{
+augroup direnv 
+    autocmd BufNewFile,BufRead .envrc :set filetype=sh
+    autocmd BufNewFile,BufRead .envrc* :set filetype=sh
+augroup END
 " }}}

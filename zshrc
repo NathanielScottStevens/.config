@@ -6,6 +6,10 @@ bindkey -M viins 'jk' vi-cmd-mode
 # AWS
 export AWS_PROFILE=default
 
+function dev_instances() {
+  aws ec2 describe-instances --query 'Reservations[].Instances[].[InstanceId,Tags[?Key==`product`]| [0].Value]' --output table
+}
+
 # BIN
 PATH=$PATH:~/bin
 
@@ -29,6 +33,7 @@ alias mt="mix test | tee results.test"
 alias mtn="mix test | gtn"
 alias mcc="mix coveralls.html | grep -v '0$'"
 
+
 function update_migration() {
   local migration_file=$1
   local migration_name=${migration_file:14}
@@ -37,12 +42,18 @@ function update_migration() {
   mv $1 "$new_time$migration_name"
 }
 
-# Alias
+# Search
 alias as="alias | grep "
+alias es="env | grep -i "
 
 # MISC
 alias s="source ~/.zshrc"
 alias po="lsof -i -P -n | grep LISTEN"
+
+function gen_uuid {
+  [[ -n $1 ]] && count=$1 || count=1
+  curl -s "https://www.uuidgenerator.net/version4/bulk.json?amount=$count" | jq ".[]" | tr -d '"'
+}
 
 # VIM
 alias vim="nvim"
@@ -54,8 +65,10 @@ alias vim="nvim"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # DOCKER
-alias dps="docker ps"
+alias dps="docker ps | vim -R --cmd 'set nowrap'"   
 alias dk="docker kill"
+alias dc="docker-compose"
+alias dburn='docker stop $(docker ps -aq); docker rm $(docker ps -aq)'
 
 # Find Replace
 function find_replace() {
@@ -65,3 +78,5 @@ function find_replace() {
 
   find . -name '*.'${file_ext} -print0 | xargs -0 sed -i "" "s/"${target}"/"${replacement}/"g"
 }
+
+
