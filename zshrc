@@ -19,6 +19,7 @@ alias gcos="git for-each-ref --format='%(refname:short)' refs/heads | fzf | xarg
 alias gcoa="git checkout ."
 alias glogt="glod | grep 'Nathaniel\|tag' | less"
 alias gtodo="git diff develop -S TODO"
+alias glast="git rev-parse --short HEAD | pbcopy"
 
 # Elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -26,12 +27,14 @@ alias mp="mix phx.server"
 alias mpi="iex -S mix phx.server"
 alias mdg="mix deps.get"
 alias mem="mix ecto.migrate"
-alias mer="mix ecto.reset"
+alias mer="mix ecto.rollback -n=1"
 alias megm="mix ecto.gen.migration"
 alias gtn="grep '^\s\+\d\+)'"
 alias mt="mix test | tee results.test"
 alias mtn="mix test | gtn"
 alias mcc="mix coveralls.html | grep -v '0$'"
+alias mgc="mix xref callers"
+alias mgr="mix xref graph --only-nodes --source" 
 
 
 function update_migration() {
@@ -78,5 +81,4 @@ function find_replace() {
 
   find . -name '*.'${file_ext} -print0 | xargs -0 sed -i "" "s/"${target}"/"${replacement}/"g"
 }
-
 

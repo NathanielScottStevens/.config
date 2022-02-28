@@ -13,6 +13,7 @@ set foldlevel=99
 set backspace=indent,eol,start
 set nocscopetag "Prevent tag jumps from not showing multiple tag hits
 set ignorecase
+set smartcase
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -120,7 +121,7 @@ xnoremap s :sort<cr>
 " Fugitive ---------------------- {{{
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gr :Gread<CR>
 " }}}
 

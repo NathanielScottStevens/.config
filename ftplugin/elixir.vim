@@ -1,6 +1,7 @@
 setlocal shiftwidth=2 softtabstop=2 expandtab 
 setlocal foldmethod=syntax
 set foldlevel=99
+" set iskeyword-=_
 
 iabbrev ii \|> IO.inspect(label: "<c-r>=@%<cr>:<c-r>=line(".")<cr>")
 iabbrev :o {:ok,}<Left>
@@ -20,11 +21,13 @@ endfunction
 
 function! GetAllCallers()
   let moduleName = GetModuleName()
-  execute "new | 0read !mix xref callers " . moduleName
+  let command = "mix xref callers " . moduleName
+  call VimuxRunCommand(command)
 endfunction
 
 function! GetAllReferences()
-  execute "new | 0read !mix xref graph --only-nodes --source " . expand('%')
+  let command = "mix xref graph --only-nodes --source " . expand('%')
+  call VimuxRunCommand(command)
 endfunction
 
 function! SendTextToRepl()
