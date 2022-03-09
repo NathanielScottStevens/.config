@@ -4,6 +4,7 @@ set foldlevel=99
 " set iskeyword-=_
 
 iabbrev ii \|> IO.inspect(label: "<c-r>=@%<cr>:<c-r>=line(".")<cr>")
+iabbrev iib binding() \|> IO.inspect(label: "<c-r>=@%<cr>:<c-r>=line(".")<cr>")
 iabbrev :o {:ok,}<Left>
 iabbrev :e {:error,}<Left>
 iabbrev #t # TODO
