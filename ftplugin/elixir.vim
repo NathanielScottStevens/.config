@@ -8,6 +8,8 @@ iabbrev iib binding() \|> IO.inspect(label: "<c-r>=@%<cr>:<c-r>=line(".")<cr>")
 iabbrev :o {:ok,}<Left>
 iabbrev :e {:error,}<Left>
 iabbrev #t # TODO
+iabbrev d def do<cr><cr>end
+iabbrev dp defp do<cr><cr>end
 
 function! GetModuleName()
   let moduleDeclaration = getline(1)
@@ -43,6 +45,7 @@ nnoremap <buffer> <leader><leader>d :cexpr system('mix dialyzer')<cr>
 onoremap <buffer> m :<c-u>normal! F%vf{%<cr> " Operate on elixir map
 nnoremap <buffer> <leader><leader>ve :vsplit ~/config/ftplugin/elixir.vim<cr>
 nnoremap <buffer> <leader><leader>fa :setlocal foldlevel=1<cr>
+nnoremap <buffer> <leader><leader>p dt,kpjHi\|> f,xx
 
 " Module Mappings
 nnoremap <buffer> <leader><leader>my :call YankModuleName()<CR>

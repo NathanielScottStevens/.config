@@ -126,8 +126,8 @@ nnoremap <leader>gr :Gread<CR>
 " }}}
 
 " Vim Diff ---------------------- {{{
-nnoremap <leader>gmr :diffget RE<CR>
-nnoremap <leader>gml :diffget LO<CR>
+nnoremap <leader>gmr :diffget REMOTE<CR>
+nnoremap <leader>gml :diffget LOCAL<CR>
 " }}}
 
 " Vim Test  ---------------------- {{{
