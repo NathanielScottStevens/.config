@@ -116,6 +116,7 @@ nnoremap L $
 onoremap L $
 vnoremap L $
 xnoremap s :sort<cr>
+nnoremap <leader>e :e .envrc.custom<cr>
 " }}}
 
 " Fugitive ---------------------- {{{
@@ -242,6 +243,7 @@ let g:haskell_indent_disable = 1
 let g:mix_format_on_save = 1
 augroup elixir 
     autocmd BufNewFile *.exs :set filetype=elixir<cr>
+    autocmd BufNewFile *.heex :set filetype=eelixir<cr>
 augroup END
 " }}}
 
