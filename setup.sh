@@ -9,6 +9,7 @@ ln -s ~/config/spell ~/.vim/spell
 ln -s ~/config/gitignore ~/.gitignore
 ln -s ~/config/ctags ~/.ctags
 ln -s ~/config/tool-versions ~/.tool-versions 
+ln -s ~/config/zshrc ~/.zshrc
 
 git config --global core.excludesfile ~/.gitignore
 git config --global merge.tool vimdiff
