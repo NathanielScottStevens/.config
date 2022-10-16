@@ -1,7 +1,19 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # ZSH
 export ZSH_THEME="powerlevel10k/powerlevel10k"
 export plugins=(git vi-mode asdf fzf)
 bindkey -M viins 'jk' vi-cmd-mode
+source ~/.oh-my-zsh/oh-my-zsh.sh
+
+# ASDF
+# This is required when asdf is installed through brew
+export PATH=~/.asdf/shims:$PATH
 
 # AWS
 export AWS_PROFILE=default
@@ -82,3 +94,5 @@ function find_replace() {
   find . -name '*.'${file_ext} -print0 | xargs -0 sed -i "" "s/"${target}"/"${replacement}/"g"
 }
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

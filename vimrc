@@ -58,6 +58,7 @@ Plug 'tyru/open-browser-github.vim'
 Plug 'elixir-editors/vim-elixir' " Syntax Highlighting and file type detection
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Need to run :CocInstall coc-elixir
 Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+" Probably need to build ElixirLS: https://github.com/elixir-lsp/coc-elixir#server-fails-to-start
 Plug 'mhinz/vim-mix-format'
 
 " Haskell
@@ -96,6 +97,10 @@ highlight DiffChange   ctermfg=black ctermbg=lightblue
 highlight DiffText   ctermfg=black ctermbg=lightblue
 
 highlight Search   ctermbg=17
+
+" :h coc-highlights
+" Pop up completion box
+highlight CocFloating ctermfg=gray ctermbg=black
 " }}}
 
 " Mappings  ---------------------- {{{

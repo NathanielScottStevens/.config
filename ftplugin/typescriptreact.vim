@@ -1,67 +1,7 @@
-setlocal shiftwidth=2 softtabstop=2 expandtab 
+setlocal shiftwidth=2 softtabstop=2 expandtab
 setlocal foldmethod=syntax
-set foldlevel=99
-" set iskeyword-=_
 
-iabbrev ii \|> IO.inspect(label: "<c-r>=@%<cr>:<c-r>=line(".")<cr>")
-iabbrev iib binding() \|> IO.inspect(label: "<c-r>=@%<cr>:<c-r>=line(".")<cr>")
-iabbrev :o {:ok,}<Left>
-iabbrev :e {:error,}<Left>
-iabbrev #t # TODO
-iabbrev d def do<cr><cr>end
-iabbrev dp defp do<cr><cr>end
-
-function! GetModuleName()
-  let moduleDeclaration = getline(1)
-  return split(moduleDeclaration)[1]
-endfunction
-
-function! YankModuleName()
-  let moduleName = GetModuleName()
-  let @* = moduleName
-  let @+ = moduleName
-endfunction
-
-function! GetAllCallers()
-  let moduleName = GetModuleName()
-  let command = "mix xref callers " . moduleName
-  call VimuxRunCommand(command)
-endfunction
-
-function! GetAllReferences()
-  let command = "mix xref graph --only-nodes --source " . expand('%')
-  call VimuxRunCommand(command)
-endfunction
-
-function! SendTextToRepl()
-  let text = substitute(@*, "\n\\s*|>", " |>\n", "g")
-  call VimuxSendText(text)
-endfunction
-
-" setlocal makeprg=mix\ compile
-" nnoremap <leader><leader>c :make<cr>
-nnoremap <buffer> <leader><leader>c :call VimuxOpenRunner() \| call VimuxRunCommand("echo; mix compile")<CR>
-nnoremap <buffer> <leader><leader>d :cexpr system('mix dialyzer')<cr>
-onoremap <buffer> m :<c-u>normal! F%vf{%<cr> " Operate on elixir map
-nnoremap <buffer> <leader><leader>ve :vsplit ~/config/ftplugin/elixir.vim<cr>
-nnoremap <buffer> <leader><leader>fa :setlocal foldlevel=1<cr>
-nnoremap <buffer> <leader><leader>p dt,kpjHi\|> f,xx
-
-" Module Mappings
-nnoremap <buffer> <leader><leader>my :call YankModuleName()<CR>
-nnoremap <buffer> <leader><leader>mc :call GetAllCallers()<CR>
-nnoremap <buffer> <leader><leader>mr :call GetAllReferences()<CR>
-nnoremap <buffer> <leader><leader>mf :vimgrep '^\s*defp\? ' % \| copen \| cc<CR>
-nnoremap <buffer> <leader><leader>ma :vimgrep '^\s*@' % \| copen \| cc<CR>
-nnoremap <buffer> <leader><leader>mt :vimgrep '^\s*test' % \| copen \| cc<CR>
-nnoremap <buffer> <leader><leader>md :vimgrep '^\s*describe' % \| copen \| cc<CR>
-
-" Vimux
-nnoremap <buffer> <leader><leader>ro :call VimuxOpenRunner() \| call VimuxRunCommand("echo; iex")<CR>
-nnoremap <buffer> <leader><leader>ra :call VimuxOpenRunner() \| call VimuxRunCommand("echo; iex -S mix")<CR>
-nnoremap <buffer> <leader><leader>rr :call VimuxRunCommand("recompile")<CR>
-nnoremap <buffer> <leader><leader>rs :call SendTextToRepl()<CR>
-
+" :CocInstall coc-tsserver
 " Coc ---------------------- {{{
 " Some servers have issues with backup files, see #649.
 set nobackup
