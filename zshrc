@@ -63,7 +63,7 @@ function find_replace() {
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.config/p10k.zsh
 
 # Abbr
 source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh

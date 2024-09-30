@@ -15,7 +15,7 @@ git config --global core.excludesfile ~/.gitignore
 git config --global merge.tool vimdiff
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo "source ~/config/zshrc" >> ~/.zshrc
+echo "source ~/.config/zshrc" >> ~/.zshrc
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k  
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
