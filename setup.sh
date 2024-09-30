@@ -1,15 +1,15 @@
 mkdir ~/.vim
-ln -s ~/config/spell ~/.spell
-ln -s ~/config/tmux.conf ~/.tmux.conf
-ln -s ~/config/vimrc ~/.vimrc
-ln -s ~/config/ftplugin ~/.vim/ftplugin
-ln -s ~/config/ftplugin ~/.config/nvim/ftplugin #neovim
-ln -s ~/config/init.vim ~/.config/nvim
-ln -s ~/config/spell ~/.vim/spell
-ln -s ~/config/gitignore ~/.gitignore
-ln -s ~/config/ctags ~/.ctags
-ln -s ~/config/tool-versions ~/.tool-versions 
-ln -s ~/config/zshrc ~/.zshrc
+ln -s ~/.config/spell ~/.spell
+ln -s ~/.config/tmux.conf ~/.tmux.conf
+ln -s ~/.config/vimrc ~/.vimrc
+ln -s ~/.config/ftplugin ~/.vim/ftplugin
+ln -s ~/.config/ftplugin ~/.config/nvim/ftplugin #neovim
+ln -s ~/.config/init.vim ~/.config/nvim
+ln -s ~/.config/spell ~/.vim/spell
+ln -s ~/.config/gitignore ~/.gitignore
+ln -s ~/.config/ctags ~/.ctags
+ln -s ~/.config/tool-versions ~/.tool-versions 
+ln -s ~/.config/zshrc ~/.zshrc
 
 git config --global core.excludesfile ~/.gitignore
 git config --global merge.tool vimdiff
@@ -36,10 +36,15 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install neovim
   brew install ctags
   brew install docker-compose
+  brew install olets/tap/zsh-abbr
   brew install --cask docker
   brew install --cask iterm2
   brew install --cask google-chrome
   brew install --cask rectangle
+  brew install --cask slack
+  brew install --cask visual-studio-code
+  brew install --cask iterm2
+  brew install --cask flycut
 
   brew install fzf
   $(brew --prefix)/opt/fzf/install
