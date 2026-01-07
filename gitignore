@@ -10,3 +10,5 @@ results.test
 .credo.exs
 .iex.exs
 .vim/
+.github/copilot-instructions.md
+

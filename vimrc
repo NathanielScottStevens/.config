@@ -11,7 +11,6 @@ set hidden
 set foldtext=getline(v:foldstart)
 set foldlevel=99
 set backspace=indent,eol,start
-set nocscopetag "Prevent tag jumps from not showing multiple tag hits
 set ignorecase
 set smartcase
 
